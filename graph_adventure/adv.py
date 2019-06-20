@@ -1,6 +1,7 @@
 from room import Room
 from player import Player
 from world import World
+from util import Queue
 
 import random
 
@@ -19,9 +20,25 @@ world.loadGraph(roomGraph)
 world.printRooms()
 player = Player("Name", world.startingRoom)
 
-
 # FILL THIS IN
-traversalPath = ['n', 's']
+traversalPath = []
+
+
+# Set player.currentRoom as the starting point.
+# Execute a DFS, marking every visited room as visited, until we reach a room with no unexplored paths.
+# When you reach a dead-end, walk back to the nearest room that does contain an unexplored path and update the traversalPath.
+# If the new room is not in the exploration_map, find the possible exits.
+# Update the exploration map
+# Add all unexplored rooms to the unexplored_rooms list
+# To break out of the loop, remove the reverse direction from the unexplored_rooms
+# Execute a BFS to find the shortest path to an unexplored room.
+# Search for an exit with a '?' as the value.
+# If an exit has been explored, put it in the BFS queue like normal.
+# BFS will return the path as a list of room IDs.
+# Convert this to a list of n/s/e/w directions before adding it to the traversal path.
+# Continue loop until the traversal graph has 500 entries and no '?' in the adjacency dictionaries.
+
+
 
 
 # TRAVERSAL TEST
