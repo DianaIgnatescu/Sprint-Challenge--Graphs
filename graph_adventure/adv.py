@@ -30,7 +30,6 @@ traversalPath = []
 # If the new room is not in the exploration_map, find the possible exits.
 # Update the exploration map
 # Add all unexplored rooms to the unexplored_rooms list
-# To break out of the loop, remove the reverse direction from the unexplored_rooms
 # Execute a BFS to find the shortest path to an unexplored room.
 # Search for an exit with a '?' as the value.
 # If an exit has been explored, put it in the BFS queue like normal.
@@ -39,16 +38,6 @@ traversalPath = []
 # Continue loop until the traversal graph has 500 entries and no '?' in the adjacency dictionaries.
 
 
-# Create a helper function to go backwards
-def reverse_direction(direction):
-    if direction is 'n':
-        return 's'
-    elif direction is 's':
-        return 'n'
-    elif direction is 'e':
-        return 'w'
-    elif direction is 'w':
-        return 'e'
 
 
 # Keep track of all moves made in the exploration map
