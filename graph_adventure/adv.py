@@ -39,48 +39,33 @@ traversalPath = []
 # Continue loop until the traversal graph has 500 entries and no '?' in the adjacency dictionaries.
 
 
-# # Create a helper function to go backwards
-# def reverse_direction(direction):
-#     if direction is 'n':
-#         return 's'
-#     elif direction is 's':
-#         return 'n'
-#     elif direction is 'e':
-#         return 'w'
-#     elif direction is 'w':
-#         return 'e'
-#
-#
-# # # Keep track of all moves made in the exploration map
-# exploration_map = {}
-#
-# # Construct traversal graph
-# traversal_graph = {}
-#
-#
-# # Keep track of moves
-# moves = []
-#
-# unexplored_paths = []
-#
-#
-# # Find all possible exits
-# possible_exits = player.currentRoom.getExits()
-# exploration_map[player.currentRoom.id] = {possible_exits[i]: '?' for i in range(0, len(possible_exits))}
-#
-# # Keep track of all paths to reverse
-# reverse_paths = []
-#
-# # While not all rooms have been visited...
-# while len(exploration_map) < 499:
-#     # If the current room is not in the exploration_map...
-#     if player.currentRoom.id not in exploration_map:
-#         # Mark it as visited by adding it to the exploration_map alongside the exits
-#         discovered_exits = player.currentRoom.getExits()
-#         exploration_map[player.currentRoom.id] = {discovered_exits[i] for i in range(0, len(discovered_exits))}
-#
-#         # Add a way to move backwards
-#         exploration_map[player.currentRoom.id][reverse_paths[- 1]] = player.currentRoom.getRoomInDirection(reverse_paths[- 1])
+# Create a helper function to go backwards
+def reverse_direction(direction):
+    if direction is 'n':
+        return 's'
+    elif direction is 's':
+        return 'n'
+    elif direction is 'e':
+        return 'w'
+    elif direction is 'w':
+        return 'e'
+
+
+# Keep track of all moves made in the exploration map
+exploration_map = {}
+
+# Find all possible exits
+possible_exits = player.currentRoom.getExits()
+exploration_map[player.currentRoom.id] = {i: '?' for i in possible_exits}
+
+
+# Keep track of all unexplored rooms
+unexplored_rooms = []
+
+for option in player.currentRoom.getExits():
+    # Add the option to the unexplored rooms
+    unexplored_rooms.append({(player.currentRoom.id, option)})
+
 
 
 # TRAVERSAL TEST
